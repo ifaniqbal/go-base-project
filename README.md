@@ -6,26 +6,26 @@
 2. Install Mockery version v2.13 or later
 3. Use GoLand (recommended)
 4. Download dependencies with command `go mod download`
-4. Create `.env` file based on `.env.example`
+5. Create `.env` file based on `.env.example`
 
 ## Run
 
 Use this command to run API app from root directory:
 
 ```shell
-go run app/api/api.go
+go run cmd/api/main.go
 ```
 
 Use this command to run consumer app from root directory:
 
 ```shell
-go run app/consumer/consumer.go
+go run cmd/consumer/main.go
 ```
 
 Use this command to run scheduler app from root directory:
 
 ```shell
-go run app/scheduler/scheduler.go
+go run cmd/scheduler/main.go
 ```
 
 ## Unit Tests
@@ -35,7 +35,7 @@ go run app/scheduler/scheduler.go
 To generate mock, run:
 
 ```shell
-mockery --all --keeptree --case underscore --with-expecter
+mockery --all --keeptree --case underscore --with-expecter --output ./test/mocks
 ```
 
 ### Run Unit Tests

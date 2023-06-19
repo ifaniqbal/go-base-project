@@ -1,4 +1,4 @@
-module bitbucket.org/ifan-moladin/base-project
+module github.com/ifaniqbal/go-base-project
 
 go 1.19
 

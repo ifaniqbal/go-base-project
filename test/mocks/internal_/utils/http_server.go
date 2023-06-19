@@ -3,7 +3,7 @@
 package mocks
 
 import (
-	"github.com/ifaniqbal/go-base-project/internal/utils"
+	utils "github.com/ifaniqbal/go-base-project/internal/utils"
 	mock "github.com/stretchr/testify/mock"
 )
 
@@ -50,7 +50,7 @@ type HttpServer_Group_Call struct {
 
 // Group is a helper method to define mock.On call
 //   - relativePath string
-//   - handles ...httpserver.HandlerFunc
+//   - handles ...utils.HandlerFunc
 func (_e *HttpServer_Expecter) Group(relativePath interface{}, handles ...interface{}) *HttpServer_Group_Call {
 	return &HttpServer_Group_Call{Call: _e.mock.On("Group",
 		append([]interface{}{relativePath}, handles...)...)}

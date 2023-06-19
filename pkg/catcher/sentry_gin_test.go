@@ -2,6 +2,7 @@ package catcher
 
 import (
 	"errors"
+	"github.com/ifaniqbal/go-base-project/internal/utils"
 	"github.com/ifaniqbal/go-base-project/test/mocks/pkg/environment"
 	mocks3 "github.com/ifaniqbal/go-base-project/test/mocks/pkg/httpserver"
 	"net/http"
@@ -12,7 +13,6 @@ import (
 	sentrygin "github.com/getsentry/sentry-go/gin"
 	"github.com/gin-gonic/gin"
 	"github.com/ifaniqbal/go-base-project/pkg/environment"
-	"github.com/ifaniqbal/go-base-project/pkg/httpserver"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -32,13 +32,13 @@ func TestSentryGinCatcher_WithContext(t *testing.T) {
 		env environment.Environment
 	}
 	type args struct {
-		ctx httpserver.Context
+		ctx utils.Context
 	}
 	type testCase struct {
 		name   string
 		fields fields
 		args   args
-		want   Catcher
+		want   utils.Catcher
 	}
 	var tests []testCase
 	mockEnv := mocks.NewEnvironment(t)
@@ -63,7 +63,7 @@ func TestSentryGinCatcher_WithContext(t *testing.T) {
 	testCtx, _ := gin.CreateTestContext(w)
 	req, _ := http.NewRequest("GET", "/", nil)
 	testCtx.Request = req
-	var ctx httpserver.Context
+	var ctx utils.Context
 	ctx = testCtx
 	ginCtx, _ := ctx.(*gin.Context)
 	options := sentrygin.Options{

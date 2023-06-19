@@ -3,7 +3,7 @@
 package mocks
 
 import (
-	catcher "github.com/ifaniqbal/go-base-project/pkg/catcher"
+	utils "github.com/ifaniqbal/go-base-project/internal/utils"
 	mock "github.com/stretchr/testify/mock"
 )
 
@@ -21,19 +21,19 @@ func (_m *initCatcherFunc) EXPECT() *initCatcherFunc_Expecter {
 }
 
 // Execute provides a mock function with given fields:
-func (_m *initCatcherFunc) Execute() (catcher.Catcher, error) {
+func (_m *initCatcherFunc) Execute() (utils.Catcher, error) {
 	ret := _m.Called()
 
-	var r0 catcher.Catcher
+	var r0 utils.Catcher
 	var r1 error
-	if rf, ok := ret.Get(0).(func() (catcher.Catcher, error)); ok {
+	if rf, ok := ret.Get(0).(func() (utils.Catcher, error)); ok {
 		return rf()
 	}
-	if rf, ok := ret.Get(0).(func() catcher.Catcher); ok {
+	if rf, ok := ret.Get(0).(func() utils.Catcher); ok {
 		r0 = rf()
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(catcher.Catcher)
+			r0 = ret.Get(0).(utils.Catcher)
 		}
 	}
 
@@ -63,12 +63,12 @@ func (_c *initCatcherFunc_Execute_Call) Run(run func()) *initCatcherFunc_Execute
 	return _c
 }
 
-func (_c *initCatcherFunc_Execute_Call) Return(_a0 catcher.Catcher, _a1 error) *initCatcherFunc_Execute_Call {
+func (_c *initCatcherFunc_Execute_Call) Return(_a0 utils.Catcher, _a1 error) *initCatcherFunc_Execute_Call {
 	_c.Call.Return(_a0, _a1)
 	return _c
 }
 
-func (_c *initCatcherFunc_Execute_Call) RunAndReturn(run func() (catcher.Catcher, error)) *initCatcherFunc_Execute_Call {
+func (_c *initCatcherFunc_Execute_Call) RunAndReturn(run func() (utils.Catcher, error)) *initCatcherFunc_Execute_Call {
 	_c.Call.Return(run)
 	return _c
 }

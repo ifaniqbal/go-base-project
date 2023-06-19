@@ -1,14 +1,15 @@
-package httpserver
+package ginwrapper
 
 import (
+	"github.com/ifaniqbal/go-base-project/internal/utils"
 	"testing"
 
 	"github.com/gin-gonic/gin"
 )
 
 func TestGin_Group(t *testing.T) {
-	handles := []HandlerFunc{
-		func(ctx Context) {},
+	handles := []utils.HandlerFunc{
+		func(ctx utils.Context) {},
 	}
 
 	t.Run("success", func(t *testing.T) {
@@ -20,8 +21,8 @@ func TestGin_Group(t *testing.T) {
 }
 
 func TestGinRouteHandler_Group(t *testing.T) {
-	handles := []HandlerFunc{
-		func(ctx Context) {},
+	handles := []utils.HandlerFunc{
+		func(ctx utils.Context) {},
 	}
 
 	t.Run("success", func(t *testing.T) {
@@ -42,8 +43,8 @@ func TestGinRouteHandler_BasePath(t *testing.T) {
 }
 
 func TestGinRouteHandler_Use(t *testing.T) {
-	handles := []HandlerFunc{
-		func(ctx Context) {},
+	handles := []utils.HandlerFunc{
+		func(ctx utils.Context) {},
 	}
 
 	t.Run("success", func(t *testing.T) {
@@ -68,8 +69,8 @@ func TestGin_Run(t *testing.T) {
 
 func Test_handleHandles(t *testing.T) {
 	t.Run("handle", func(t *testing.T) {
-		handles := toGinHandlerFuncs([]HandlerFunc{
-			func(ctx Context) {},
+		handles := toGinHandlerFuncs([]utils.HandlerFunc{
+			func(ctx utils.Context) {},
 		})
 		handles[0](nil)
 	})

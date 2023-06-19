@@ -2,19 +2,18 @@ package health
 
 import (
 	"fmt"
+	"github.com/ifaniqbal/go-base-project/internal/utils"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/ifaniqbal/go-base-project/pkg/catcher"
-	"github.com/ifaniqbal/go-base-project/pkg/httpserver"
 )
 
 type RequestHandler struct {
 	repo    VersionGetterRepository
-	catcher catcher.Catcher
+	catcher utils.Catcher
 }
 
-func (h RequestHandler) check(ctx httpserver.Context) {
+func (h RequestHandler) check(ctx utils.Context) {
 	currentCatcher := h.catcher.WithContext(ctx)
 	version, err := h.repo.GetVersion()
 	if err != nil {

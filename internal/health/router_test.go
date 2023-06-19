@@ -1,19 +1,19 @@
 package health
 
 import (
+	"github.com/ifaniqbal/go-base-project/internal/utils"
 	"github.com/ifaniqbal/go-base-project/test/mocks/pkg/httpserver"
 	"testing"
 
-	"github.com/ifaniqbal/go-base-project/pkg/httpserver"
 	"github.com/stretchr/testify/mock"
 )
 
 func TestRouter_Route(t *testing.T) {
 	type args struct {
-		route httpserver.RouteHandler
+		route utils.RouteHandler
 	}
 	mockRoute := mocks.NewRouteHandler(t)
-	mockRoute.EXPECT().GET("/", mock.AnythingOfType("httpserver.HandlerFunc")).Return(mockRoute).Once()
+	mockRoute.EXPECT().GET("/", mock.AnythingOfType("utils.HandlerFunc")).Return(mockRoute).Once()
 	tests := []struct {
 		name string
 		args args

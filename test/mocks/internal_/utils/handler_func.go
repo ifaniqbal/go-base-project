@@ -3,7 +3,7 @@
 package mocks
 
 import (
-	"github.com/ifaniqbal/go-base-project/internal/utils"
+	utils "github.com/ifaniqbal/go-base-project/internal/utils"
 	mock "github.com/stretchr/testify/mock"
 )
 
@@ -31,7 +31,7 @@ type HandlerFunc_Execute_Call struct {
 }
 
 // Execute is a helper method to define mock.On call
-//   - ctx httpserver.Context
+//   - ctx utils.Context
 func (_e *HandlerFunc_Expecter) Execute(ctx interface{}) *HandlerFunc_Execute_Call {
 	return &HandlerFunc_Execute_Call{Call: _e.mock.On("Execute", ctx)}
 }

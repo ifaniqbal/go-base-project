@@ -1,16 +1,14 @@
 package api
 
-import (
-	"github.com/ifaniqbal/go-base-project/pkg/httpserver"
-)
+import "github.com/ifaniqbal/go-base-project/internal/utils"
 
 type Api struct {
-	httpServer httpserver.HttpServer
+	httpServer utils.HttpServer
 	routers    []Router
 }
 
 type Router interface {
-	Route(rgh httpserver.RouteHandler)
+	Route(rgh utils.RouteHandler)
 }
 
 func (a Api) Start() error {
@@ -28,7 +26,7 @@ func (a Api) Start() error {
 }
 
 func New(
-	httpServer httpserver.HttpServer,
+	httpServer utils.HttpServer,
 	routers []Router,
 ) *Api {
 	return &Api{

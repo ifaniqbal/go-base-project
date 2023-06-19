@@ -1,8 +1,7 @@
 package health
 
 import (
-	"github.com/ifaniqbal/go-base-project/pkg/catcher"
-	"github.com/ifaniqbal/go-base-project/pkg/httpserver"
+	"github.com/ifaniqbal/go-base-project/internal/utils"
 	"gorm.io/gorm"
 )
 
@@ -10,7 +9,7 @@ type Router struct {
 	requestHandler *RequestHandler
 }
 
-func NewRouter(db *gorm.DB, defaultCatcher catcher.Catcher) *Router {
+func NewRouter(db *gorm.DB, defaultCatcher utils.Catcher) *Router {
 	return &Router{
 		requestHandler: &RequestHandler{
 			catcher: defaultCatcher,
@@ -19,6 +18,6 @@ func NewRouter(db *gorm.DB, defaultCatcher catcher.Catcher) *Router {
 	}
 }
 
-func (r Router) Route(route httpserver.RouteHandler) {
+func (r Router) Route(route utils.RouteHandler) {
 	route.GET("/", r.requestHandler.check)
 }

@@ -1,9 +1,10 @@
-// Package httpserver provides a simple HTTP server implementation
+// Package ginwrapper provides a simple HTTP server implementation
 // using Gin framework.
-package httpserver
+package ginwrapper
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/ifaniqbal/go-base-project/internal/utils"
 )
 
 // Gin type is a struct that contains a pointer to a Gin engine.
@@ -32,13 +33,13 @@ func (g Gin) Run(addr ...string) error {
 
 // Group creates a new router group with the provided relativePath
 // and handles as middlewares. It returns a RouteHandler type.
-func (g Gin) Group(relativePath string, handles ...HandlerFunc) RouteHandler {
+func (g Gin) Group(relativePath string, handles ...utils.HandlerFunc) utils.RouteHandler {
 	routerGroup := g.engine.Group(relativePath, toGinHandlerFuncs(handles)...)
 	return &GinRouteHandler{routerGroup: routerGroup}
 }
 
 // toGinHandlerFuncs converts []HandlerFunc to []gin.HandlerFunc.
-func toGinHandlerFuncs(handles []HandlerFunc) []gin.HandlerFunc {
+func toGinHandlerFuncs(handles []utils.HandlerFunc) []gin.HandlerFunc {
 	ginHandles := make([]gin.HandlerFunc, len(handles))
 	for i, handle := range handles {
 		ginHandles[i] = toGinHandlerFunc(handle)
@@ -47,7 +48,7 @@ func toGinHandlerFuncs(handles []HandlerFunc) []gin.HandlerFunc {
 }
 
 // toGinHandlerFunc takes in a HandlerFunc and returns a gin.HandlerFunc.
-func toGinHandlerFunc(handle HandlerFunc) gin.HandlerFunc {
+func toGinHandlerFunc(handle utils.HandlerFunc) gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		handle(ctx)
 	}
@@ -61,7 +62,7 @@ type GinRouteHandler struct {
 
 // Group creates a new child router group with the provided relativePath and
 // handles as middlewares. It returns a RouteHandler type.
-func (grh GinRouteHandler) Group(relativePath string, handles ...HandlerFunc) RouteHandler {
+func (grh GinRouteHandler) Group(relativePath string, handles ...utils.HandlerFunc) utils.RouteHandler {
 	routerGroup := grh.routerGroup.Group(relativePath, toGinHandlerFuncs(handles)...)
 	return &GinRouteHandler{routerGroup: routerGroup}
 }
@@ -73,7 +74,7 @@ func (grh GinRouteHandler) BasePath() string {
 
 // Use adds the provided list of HandlerFunc as middlewares to the Gin Router Group.
 // It returns the RouteHandler type.
-func (grh GinRouteHandler) Use(middlewares ...HandlerFunc) RouteHandler {
+func (grh GinRouteHandler) Use(middlewares ...utils.HandlerFunc) utils.RouteHandler {
 	grh.routerGroup.Use(toGinHandlerFuncs(middlewares)...)
 	return grh
 }
@@ -83,57 +84,57 @@ func (grh GinRouteHandler) Use(middlewares ...HandlerFunc) RouteHandler {
 func (grh GinRouteHandler) Handle(
 	httpMethod string,
 	relativePath string,
-	handles ...HandlerFunc,
-) RouteHandler {
+	handles ...utils.HandlerFunc,
+) utils.RouteHandler {
 	grh.routerGroup.Handle(httpMethod, relativePath, toGinHandlerFuncs(handles)...)
 	return grh
 }
 
 // GET creates a new GET route with the provided relativePath and
 // handles. It returns the RouteHandler type.
-func (grh GinRouteHandler) GET(relativePath string, handles ...HandlerFunc) RouteHandler {
+func (grh GinRouteHandler) GET(relativePath string, handles ...utils.HandlerFunc) utils.RouteHandler {
 	grh.routerGroup.GET(relativePath, toGinHandlerFuncs(handles)...)
 	return grh
 }
 
 // POST creates a new POST route with the provided relativePath and
 // handles. It returns the RouteHandler type.
-func (grh GinRouteHandler) POST(relativePath string, handles ...HandlerFunc) RouteHandler {
+func (grh GinRouteHandler) POST(relativePath string, handles ...utils.HandlerFunc) utils.RouteHandler {
 	grh.routerGroup.POST(relativePath, toGinHandlerFuncs(handles)...)
 	return grh
 }
 
 // DELETE creates a new DELETE route with the provided relativePath and
 // handles. It returns the RouteHandler type.
-func (grh GinRouteHandler) DELETE(relativePath string, handles ...HandlerFunc) RouteHandler {
+func (grh GinRouteHandler) DELETE(relativePath string, handles ...utils.HandlerFunc) utils.RouteHandler {
 	grh.routerGroup.DELETE(relativePath, toGinHandlerFuncs(handles)...)
 	return grh
 }
 
 // PATCH creates a new PATCH route with the provided relativePath and
 // handles. It returns the RouteHandler type.
-func (grh GinRouteHandler) PATCH(relativePath string, handles ...HandlerFunc) RouteHandler {
+func (grh GinRouteHandler) PATCH(relativePath string, handles ...utils.HandlerFunc) utils.RouteHandler {
 	grh.routerGroup.PATCH(relativePath, toGinHandlerFuncs(handles)...)
 	return grh
 }
 
 // PUT creates a new PUT route with the provided relativePath and
 // handles. It returns the RouteHandler type.
-func (grh GinRouteHandler) PUT(relativePath string, handles ...HandlerFunc) RouteHandler {
+func (grh GinRouteHandler) PUT(relativePath string, handles ...utils.HandlerFunc) utils.RouteHandler {
 	grh.routerGroup.PUT(relativePath, toGinHandlerFuncs(handles)...)
 	return grh
 }
 
 // OPTIONS creates a new OPTIONS route with the provided relativePath and
 // handles. It returns the RouteHandler type.
-func (grh GinRouteHandler) OPTIONS(relativePath string, handles ...HandlerFunc) RouteHandler {
+func (grh GinRouteHandler) OPTIONS(relativePath string, handles ...utils.HandlerFunc) utils.RouteHandler {
 	grh.routerGroup.OPTIONS(relativePath, toGinHandlerFuncs(handles)...)
 	return grh
 }
 
 // HEAD creates a new HEAD route with the provided relativePath and
 // handles. It returns the RouteHandler type.
-func (grh GinRouteHandler) HEAD(relativePath string, handles ...HandlerFunc) RouteHandler {
+func (grh GinRouteHandler) HEAD(relativePath string, handles ...utils.HandlerFunc) utils.RouteHandler {
 	grh.routerGroup.HEAD(relativePath, toGinHandlerFuncs(handles)...)
 	return grh
 }

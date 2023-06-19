@@ -2,16 +2,15 @@ package api
 
 import (
 	"errors"
+	"github.com/ifaniqbal/go-base-project/internal/utils"
 	mocks2 "github.com/ifaniqbal/go-base-project/test/mocks/internal_/api"
 	mocks "github.com/ifaniqbal/go-base-project/test/mocks/pkg/httpserver"
 	"testing"
-
-	"github.com/ifaniqbal/go-base-project/pkg/httpserver"
 )
 
 func TestApi_Start(t *testing.T) {
 	type fields struct {
-		httpServer httpserver.HttpServer
+		httpServer utils.HttpServer
 		routers    []Router
 	}
 	type testCase struct {

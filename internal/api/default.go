@@ -3,11 +3,12 @@ package api
 import (
 	"fmt"
 	"github.com/ifaniqbal/go-base-project/internal/health"
+	"github.com/ifaniqbal/go-base-project/internal/utils"
 
 	"github.com/ifaniqbal/go-base-project/pkg/catcher"
 	"github.com/ifaniqbal/go-base-project/pkg/database"
 	"github.com/ifaniqbal/go-base-project/pkg/environment"
-	"github.com/ifaniqbal/go-base-project/pkg/httpserver"
+	"github.com/ifaniqbal/go-base-project/pkg/ginwrapper"
 	_ "github.com/joho/godotenv/autoload"
 	"gorm.io/gorm"
 )
@@ -26,15 +27,15 @@ func Default() *Api {
 		health.NewRouter(dbConn, defaultCatcher),
 	}
 	return New(
-		httpserver.Default(),
+		ginwrapper.Default(),
 		routers,
 	)
 }
 
-type initCatcherFunc func() (catcher.Catcher, error)
+type initCatcherFunc func() (utils.Catcher, error)
 
 func defaultInitCatcher() initCatcherFunc {
-	return func() (catcher.Catcher, error) {
+	return func() (utils.Catcher, error) {
 		defaultCatcher := catcher.Default()
 
 		return defaultCatcher, defaultCatcher.Init()

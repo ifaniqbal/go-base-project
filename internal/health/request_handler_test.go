@@ -3,6 +3,7 @@ package health
 import (
 	"errors"
 	"fmt"
+	"github.com/ifaniqbal/go-base-project/internal/utils"
 	"github.com/ifaniqbal/go-base-project/test/mocks/internal_/health"
 	mocks3 "github.com/ifaniqbal/go-base-project/test/mocks/pkg/catcher"
 	mocks2 "github.com/ifaniqbal/go-base-project/test/mocks/pkg/httpserver"
@@ -10,18 +11,16 @@ import (
 	"testing"
 
 	"github.com/gin-gonic/gin"
-	"github.com/ifaniqbal/go-base-project/pkg/catcher"
-	"github.com/ifaniqbal/go-base-project/pkg/httpserver"
 	"github.com/stretchr/testify/mock"
 )
 
 func TestRequestHandler_check(t *testing.T) {
 	type fields struct {
 		repo    VersionGetterRepository
-		catcher catcher.Catcher
+		catcher utils.Catcher
 	}
 	type args struct {
-		ctx httpserver.Context
+		ctx utils.Context
 	}
 	type testCase struct {
 		name   string

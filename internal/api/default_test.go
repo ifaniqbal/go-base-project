@@ -2,9 +2,9 @@ package api
 
 import (
 	"errors"
+	"github.com/ifaniqbal/go-base-project/internal/utils"
 	"testing"
 
-	"github.com/ifaniqbal/go-base-project/pkg/catcher"
 	"github.com/stretchr/testify/assert"
 	"gorm.io/gorm"
 )
@@ -30,10 +30,10 @@ func TestDefault(t *testing.T) {
 		funcs funcs
 		want  func(t *testing.T)
 	}
-	var errorInitCatcher = func() (catcher.Catcher, error) {
+	var errorInitCatcher = func() (utils.Catcher, error) {
 		return nil, errors.New("e")
 	}
-	var successInitCatcher = func() (catcher.Catcher, error) {
+	var successInitCatcher = func() (utils.Catcher, error) {
 		return nil, nil
 	}
 	var errorInitDbConn = func(dsn string) (*gorm.DB, error) {

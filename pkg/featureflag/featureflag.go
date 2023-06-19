@@ -4,12 +4,6 @@ import (
 	"github.com/ifaniqbal/go-base-project/pkg/environment"
 )
 
-type FeatureFlag interface {
-	CanBeSkipped(environment string) bool
-	IsActive(flag string) bool
-	IsExplicitlyActive(flag string) bool
-}
-
 // OsEnvFeatureFlag is a struct for checking feature flag status from
 // OS environment variables.
 type OsEnvFeatureFlag struct {

@@ -3,7 +3,7 @@
 package mocks
 
 import (
-	"github.com/ifaniqbal/go-base-project/internal/utils"
+	utils "github.com/ifaniqbal/go-base-project/internal/utils"
 	mock "github.com/stretchr/testify/mock"
 )
 
@@ -91,7 +91,7 @@ type RouteHandler_DELETE_Call struct {
 
 // DELETE is a helper method to define mock.On call
 //   - relativePath string
-//   - handles ...httpserver.HandlerFunc
+//   - handles ...utils.HandlerFunc
 func (_e *RouteHandler_Expecter) DELETE(relativePath interface{}, handles ...interface{}) *RouteHandler_DELETE_Call {
 	return &RouteHandler_DELETE_Call{Call: _e.mock.On("DELETE",
 		append([]interface{}{relativePath}, handles...)...)}
@@ -150,7 +150,7 @@ type RouteHandler_GET_Call struct {
 
 // GET is a helper method to define mock.On call
 //   - relativePath string
-//   - handles ...httpserver.HandlerFunc
+//   - handles ...utils.HandlerFunc
 func (_e *RouteHandler_Expecter) GET(relativePath interface{}, handles ...interface{}) *RouteHandler_GET_Call {
 	return &RouteHandler_GET_Call{Call: _e.mock.On("GET",
 		append([]interface{}{relativePath}, handles...)...)}
@@ -209,7 +209,7 @@ type RouteHandler_Group_Call struct {
 
 // Group is a helper method to define mock.On call
 //   - relativePath string
-//   - handles ...httpserver.HandlerFunc
+//   - handles ...utils.HandlerFunc
 func (_e *RouteHandler_Expecter) Group(relativePath interface{}, handles ...interface{}) *RouteHandler_Group_Call {
 	return &RouteHandler_Group_Call{Call: _e.mock.On("Group",
 		append([]interface{}{relativePath}, handles...)...)}
@@ -268,7 +268,7 @@ type RouteHandler_HEAD_Call struct {
 
 // HEAD is a helper method to define mock.On call
 //   - relativePath string
-//   - handles ...httpserver.HandlerFunc
+//   - handles ...utils.HandlerFunc
 func (_e *RouteHandler_Expecter) HEAD(relativePath interface{}, handles ...interface{}) *RouteHandler_HEAD_Call {
 	return &RouteHandler_HEAD_Call{Call: _e.mock.On("HEAD",
 		append([]interface{}{relativePath}, handles...)...)}
@@ -328,7 +328,7 @@ type RouteHandler_Handle_Call struct {
 // Handle is a helper method to define mock.On call
 //   - httpMethod string
 //   - relativePath string
-//   - handles ...httpserver.HandlerFunc
+//   - handles ...utils.HandlerFunc
 func (_e *RouteHandler_Expecter) Handle(httpMethod interface{}, relativePath interface{}, handles ...interface{}) *RouteHandler_Handle_Call {
 	return &RouteHandler_Handle_Call{Call: _e.mock.On("Handle",
 		append([]interface{}{httpMethod, relativePath}, handles...)...)}
@@ -387,7 +387,7 @@ type RouteHandler_OPTIONS_Call struct {
 
 // OPTIONS is a helper method to define mock.On call
 //   - relativePath string
-//   - handles ...httpserver.HandlerFunc
+//   - handles ...utils.HandlerFunc
 func (_e *RouteHandler_Expecter) OPTIONS(relativePath interface{}, handles ...interface{}) *RouteHandler_OPTIONS_Call {
 	return &RouteHandler_OPTIONS_Call{Call: _e.mock.On("OPTIONS",
 		append([]interface{}{relativePath}, handles...)...)}
@@ -446,7 +446,7 @@ type RouteHandler_PATCH_Call struct {
 
 // PATCH is a helper method to define mock.On call
 //   - relativePath string
-//   - handles ...httpserver.HandlerFunc
+//   - handles ...utils.HandlerFunc
 func (_e *RouteHandler_Expecter) PATCH(relativePath interface{}, handles ...interface{}) *RouteHandler_PATCH_Call {
 	return &RouteHandler_PATCH_Call{Call: _e.mock.On("PATCH",
 		append([]interface{}{relativePath}, handles...)...)}
@@ -505,7 +505,7 @@ type RouteHandler_POST_Call struct {
 
 // POST is a helper method to define mock.On call
 //   - relativePath string
-//   - handles ...httpserver.HandlerFunc
+//   - handles ...utils.HandlerFunc
 func (_e *RouteHandler_Expecter) POST(relativePath interface{}, handles ...interface{}) *RouteHandler_POST_Call {
 	return &RouteHandler_POST_Call{Call: _e.mock.On("POST",
 		append([]interface{}{relativePath}, handles...)...)}
@@ -564,7 +564,7 @@ type RouteHandler_PUT_Call struct {
 
 // PUT is a helper method to define mock.On call
 //   - relativePath string
-//   - handles ...httpserver.HandlerFunc
+//   - handles ...utils.HandlerFunc
 func (_e *RouteHandler_Expecter) PUT(relativePath interface{}, handles ...interface{}) *RouteHandler_PUT_Call {
 	return &RouteHandler_PUT_Call{Call: _e.mock.On("PUT",
 		append([]interface{}{relativePath}, handles...)...)}
@@ -621,7 +621,7 @@ type RouteHandler_Use_Call struct {
 }
 
 // Use is a helper method to define mock.On call
-//   - middleware ...httpserver.HandlerFunc
+//   - middleware ...utils.HandlerFunc
 func (_e *RouteHandler_Expecter) Use(middleware ...interface{}) *RouteHandler_Use_Call {
 	return &RouteHandler_Use_Call{Call: _e.mock.On("Use",
 		append([]interface{}{}, middleware...)...)}

@@ -2,11 +2,11 @@ package authenticator
 
 import (
 	"errors"
+	"github.com/ifaniqbal/go-base-project/internal/utils"
 	"net/http"
 	"strings"
 
 	"github.com/golang-jwt/jwt"
-	"github.com/ifaniqbal/go-base-project/pkg/httpserver"
 )
 
 type JwtAuthenticator struct {
@@ -20,14 +20,14 @@ const authenticationPayloadKey = "authentication-payload"
 
 // Authenticate creates and returns a JwtAuthenticator middleware that validates
 // JWT tokens with the provided secret.
-func (a JwtAuthenticator) Authenticate(secret string) httpserver.HandlerFunc {
+func (a JwtAuthenticator) Authenticate(secret string) utils.HandlerFunc {
 	jwtAuthenticator := JwtAuthenticator{secret: secret}
 	return jwtAuthenticator.handle
 }
 
 // Authorize creates and returns a JwtAuthenticator middleware that validates
 // JWT tokens with the provided secret and custom validation function.
-func (a JwtAuthenticator) Authorize(secret string, isValid ValidatorFunc) httpserver.HandlerFunc {
+func (a JwtAuthenticator) Authorize(secret string, isValid ValidatorFunc) utils.HandlerFunc {
 	jwtAuthenticator := JwtAuthenticator{
 		secret:  secret,
 		isValid: isValid,
@@ -37,20 +37,20 @@ func (a JwtAuthenticator) Authorize(secret string, isValid ValidatorFunc) httpse
 
 // SendUnauthorizedResponse sends an unauthorized response
 // (HTTP status code 401) to the client.
-func (a JwtAuthenticator) SendUnauthorizedResponse(ctx httpserver.Context) {
+func (a JwtAuthenticator) SendUnauthorizedResponse(ctx utils.Context) {
 	ctx.Status(http.StatusUnauthorized)
 }
 
 // GetPayloadFromContext returns the authentication payload stored in
 // the provided http server context.
-func (a JwtAuthenticator) GetPayloadFromContext(ctx httpserver.Context) (any, bool) {
+func (a JwtAuthenticator) GetPayloadFromContext(ctx utils.Context) (any, bool) {
 	return ctx.Get(authenticationPayloadKey)
 }
 
 // handle validates JWT tokens and sets the authentication payload in
 // the request context. If the token is invalid or the payload fails validation,
 // an unauthorized response is sent and the request is aborted.
-func (a JwtAuthenticator) handle(ctx httpserver.Context) {
+func (a JwtAuthenticator) handle(ctx utils.Context) {
 	bearerToken := strings.Replace(ctx.GetHeader("Authorization"), "Bearer ", "", -1)
 	jwtToken, err := a.parseToken(bearerToken)
 	payload, claimsOk := jwtToken.Claims.(jwt.MapClaims)

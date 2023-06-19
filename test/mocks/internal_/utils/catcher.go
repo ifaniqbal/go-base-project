@@ -3,7 +3,7 @@
 package mocks
 
 import (
-	"github.com/ifaniqbal/go-base-project/internal/utils"
+	utils "github.com/ifaniqbal/go-base-project/internal/utils"
 	mock "github.com/stretchr/testify/mock"
 )
 
@@ -149,7 +149,7 @@ type Catcher_WithContext_Call struct {
 }
 
 // WithContext is a helper method to define mock.On call
-//   - ctx httpserver.Context
+//   - ctx utils.Context
 func (_e *Catcher_Expecter) WithContext(ctx interface{}) *Catcher_WithContext_Call {
 	return &Catcher_WithContext_Call{Call: _e.mock.On("WithContext", ctx)}
 }

@@ -1,13 +1,13 @@
 package authenticator
 
 import (
+	"github.com/ifaniqbal/go-base-project/internal/utils"
 	"github.com/ifaniqbal/go-base-project/test/mocks/pkg/httpserver"
 	"net/http"
 	"reflect"
 	"testing"
 
 	"github.com/golang-jwt/jwt"
-	"github.com/ifaniqbal/go-base-project/pkg/httpserver"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -17,7 +17,7 @@ func TestJwtAuthenticator_handle(t *testing.T) {
 		isValid ValidatorFunc
 	}
 	type args struct {
-		ctx httpserver.Context
+		ctx utils.Context
 	}
 	type testCase struct {
 		name   string

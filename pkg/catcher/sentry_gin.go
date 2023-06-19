@@ -4,8 +4,8 @@ import (
 	"github.com/getsentry/sentry-go"
 	"github.com/getsentry/sentry-go/gin"
 	"github.com/gin-gonic/gin"
+	"github.com/ifaniqbal/go-base-project/internal/utils"
 	"github.com/ifaniqbal/go-base-project/pkg/environment"
-	"github.com/ifaniqbal/go-base-project/pkg/httpserver"
 )
 
 // SentryGin is an implementation of a Sentry error catcher.Catcher
@@ -60,7 +60,7 @@ func (s *SentryGin) Init() error {
 // with the updated hub extracted from the Gin context.
 // If the passed context is not of type *gin.Context,
 // the original instance of SentryGin is returned.
-func (s *SentryGin) WithContext(ctx httpserver.Context) Catcher {
+func (s *SentryGin) WithContext(ctx utils.Context) utils.Catcher {
 	ginCtx, ok := ctx.(*gin.Context)
 	if !ok {
 		return s

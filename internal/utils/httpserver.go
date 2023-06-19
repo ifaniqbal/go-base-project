@@ -1,4 +1,4 @@
-package httpserver
+package utils
 
 type HttpServer interface {
 	Run(addr ...string) error

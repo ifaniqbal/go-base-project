@@ -3,7 +3,7 @@
 package mocks
 
 import (
-	httpserver "github.com/ifaniqbal/go-base-project/pkg/httpserver"
+	utils "github.com/ifaniqbal/go-base-project/internal/utils"
 	mock "github.com/stretchr/testify/mock"
 )
 
@@ -21,7 +21,7 @@ func (_m *Router) EXPECT() *Router_Expecter {
 }
 
 // Route provides a mock function with given fields: rgh
-func (_m *Router) Route(rgh httpserver.RouteHandler) {
+func (_m *Router) Route(rgh utils.RouteHandler) {
 	_m.Called(rgh)
 }
 
@@ -31,14 +31,14 @@ type Router_Route_Call struct {
 }
 
 // Route is a helper method to define mock.On call
-//   - rgh httpserver.RouteHandler
+//   - rgh utils.RouteHandler
 func (_e *Router_Expecter) Route(rgh interface{}) *Router_Route_Call {
 	return &Router_Route_Call{Call: _e.mock.On("Route", rgh)}
 }
 
-func (_c *Router_Route_Call) Run(run func(rgh httpserver.RouteHandler)) *Router_Route_Call {
+func (_c *Router_Route_Call) Run(run func(rgh utils.RouteHandler)) *Router_Route_Call {
 	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(httpserver.RouteHandler))
+		run(args[0].(utils.RouteHandler))
 	})
 	return _c
 }
@@ -48,7 +48,7 @@ func (_c *Router_Route_Call) Return() *Router_Route_Call {
 	return _c
 }
 
-func (_c *Router_Route_Call) RunAndReturn(run func(httpserver.RouteHandler)) *Router_Route_Call {
+func (_c *Router_Route_Call) RunAndReturn(run func(utils.RouteHandler)) *Router_Route_Call {
 	_c.Call.Return(run)
 	return _c
 }

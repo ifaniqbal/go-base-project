@@ -1,7 +1,7 @@
 package health
 
 import (
-	"github.com/ifaniqbal/go-base-project/test/mocks/utils/httpserver"
+	"github.com/ifaniqbal/go-base-project/test/mocks/pkg/httpserver"
 	"testing"
 
 	"github.com/ifaniqbal/go-base-project/pkg/httpserver"

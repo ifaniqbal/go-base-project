@@ -2,8 +2,8 @@ package api
 
 import (
 	"errors"
-	mocks2 "github.com/ifaniqbal/go-base-project/test/mocks/modules/api"
-	"github.com/ifaniqbal/go-base-project/test/mocks/utils/httpserver"
+	mocks2 "github.com/ifaniqbal/go-base-project/test/mocks/internal_/api"
+	mocks "github.com/ifaniqbal/go-base-project/test/mocks/pkg/httpserver"
 	"testing"
 
 	"github.com/ifaniqbal/go-base-project/pkg/httpserver"

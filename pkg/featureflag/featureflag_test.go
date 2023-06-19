@@ -1,7 +1,7 @@
 package featureflag
 
 import (
-	"github.com/ifaniqbal/go-base-project/test/mocks/utils/environment"
+	"github.com/ifaniqbal/go-base-project/test/mocks/pkg/environment"
 	"reflect"
 	"testing"
 

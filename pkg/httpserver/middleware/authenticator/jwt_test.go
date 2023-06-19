@@ -1,7 +1,7 @@
 package authenticator
 
 import (
-	"github.com/ifaniqbal/go-base-project/test/mocks/utils/httpserver"
+	"github.com/ifaniqbal/go-base-project/test/mocks/pkg/httpserver"
 	"net/http"
 	"reflect"
 	"testing"

@@ -3,9 +3,9 @@ package health
 import (
 	"errors"
 	"fmt"
-	"github.com/ifaniqbal/go-base-project/test/mocks/modules/health"
-	mocks3 "github.com/ifaniqbal/go-base-project/test/mocks/utils/catcher"
-	mocks2 "github.com/ifaniqbal/go-base-project/test/mocks/utils/httpserver"
+	"github.com/ifaniqbal/go-base-project/test/mocks/internal_/health"
+	mocks3 "github.com/ifaniqbal/go-base-project/test/mocks/pkg/catcher"
+	mocks2 "github.com/ifaniqbal/go-base-project/test/mocks/pkg/httpserver"
 	"net/http"
 	"testing"
 

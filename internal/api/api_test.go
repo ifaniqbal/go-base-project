@@ -4,7 +4,7 @@ import (
 	"errors"
 	"github.com/ifaniqbal/go-base-project/internal/utils"
 	mocks2 "github.com/ifaniqbal/go-base-project/test/mocks/internal_/api"
-	mocks "github.com/ifaniqbal/go-base-project/test/mocks/pkg/httpserver"
+	mocks "github.com/ifaniqbal/go-base-project/test/mocks/internal_/utils"
 	"testing"
 )
 

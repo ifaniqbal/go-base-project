@@ -4,9 +4,9 @@ import (
 	"errors"
 	"fmt"
 	"github.com/ifaniqbal/go-base-project/internal/utils"
-	"github.com/ifaniqbal/go-base-project/test/mocks/internal_/health"
-	mocks3 "github.com/ifaniqbal/go-base-project/test/mocks/pkg/catcher"
-	mocks2 "github.com/ifaniqbal/go-base-project/test/mocks/pkg/httpserver"
+	mocks "github.com/ifaniqbal/go-base-project/test/mocks/internal_/health"
+	mocks2 "github.com/ifaniqbal/go-base-project/test/mocks/internal_/utils"
+	mocks3 "github.com/ifaniqbal/go-base-project/test/mocks/internal_/utils"
 	"net/http"
 	"testing"
 

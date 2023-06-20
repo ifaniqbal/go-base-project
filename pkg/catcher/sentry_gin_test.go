@@ -3,8 +3,8 @@ package catcher
 import (
 	"errors"
 	"github.com/ifaniqbal/go-base-project/internal/utils"
+	mocks3 "github.com/ifaniqbal/go-base-project/test/mocks/internal_/utils"
 	"github.com/ifaniqbal/go-base-project/test/mocks/pkg/environment"
-	mocks3 "github.com/ifaniqbal/go-base-project/test/mocks/pkg/httpserver"
 	"net/http"
 	"net/http/httptest"
 	"testing"
